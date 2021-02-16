@@ -49,9 +49,10 @@ export default {
       axios
         .get(urlBase, { params })
         .then((res) => {
-          console.log(res);
+          console.log(res.data.bestMatches);
           this.hidden = false;
           this.searchResults = res.data.bestMatches;
+          this.$store.commit("setResults", res.data.bestMatches);
         })
         .catch((err) => {
           console.log(err);
