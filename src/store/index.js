@@ -13,7 +13,7 @@ const store = new Vuex.Store({
   getters: {
     results: (state) => state.results,
     error: (state) => state.error,
-    result: state => {return state.result}
+    result: state => state.result
   },
   mutations: {
     setResults(state, payload) {
