@@ -6,18 +6,17 @@
       placeholder="testing 1 2 3"
       id="search-input"
       v-model="searchValue"
-      @input="onChange"
-      @blur="hidden = true"
+      @input="onChange();"
     />
-    <div class="autocomplete-results-wrapper" v-if="!hidden">
+    <div class="autocomplete-results-wrapper" v-show="!hidden && searchResults && searchResults.length > -1">
       <div
-        v-for="(results, index) in searchResults"
+        v-for="(result, index) in searchResults"
         :key="index"
         class="autocomplete-results"
-        v-on:click="getSingleResult($event)"
+        @click="getSingleResult(result, index)"
       >
-        <div class="autocomplete-result">{{ results["1. symbol"] }}</div>
-        <div class="autocomplete-result">{{ results["2. name"] }}</div>
+        <div class="autocomplete-result">{{ result["1. symbol"] }}</div>
+        <div class="autocomplete-result">{{ result["2. name"] }}</div>
       </div>
     </div>
   </div>
@@ -50,10 +49,9 @@ export default {
       axios
         .get(urlBase, { params })
         .then((res) => {
-          console.log(res.data.bestMatches);
+          console.log(res);
           this.hidden = false;
           this.searchResults = res.data.bestMatches;
-          this.$store.commit("setResults", res.data.bestMatches);
         })
         .catch((err) => {
           console.log(err);
@@ -63,9 +61,9 @@ export default {
       this.apiCall();
       console.log(param);
     },
-    getSingleResult(e) {
-      let targetId = e.currentTarget.id;
-      alert("hello this works" + targetId);
+    getSingleResult(result, index) {
+      this.hidden = true
+      console.log("hello this works " + index + " is " + result['2. name'])
     },
   },
 };
