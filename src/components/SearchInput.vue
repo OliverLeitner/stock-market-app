@@ -6,15 +6,13 @@
       placeholder="testing 1 2 3"
       id="search-input"
       v-model="searchValue"
-      @input="onChange();"
-    />
+      @input="onChange();" />
     <div class="autocomplete-results-wrapper" v-show="!hidden && searchResults && searchResults.length > -1">
       <div
         v-for="(result, index) in searchResults"
         :key="index"
         class="autocomplete-results"
-        @click="searchValue=result['1. symbol'].toLowerCase();getSingleResult(result, index)"
-      >
+        @click="searchValue=result['1. symbol'].toLowerCase();getSingleResult(result, index)">
         <div class="autocomplete-result">{{ result["1. symbol"] }}</div>
         <div class="autocomplete-result">{{ result["2. name"] }}</div>
       </div>
@@ -24,18 +22,18 @@
 
 <script>
 import axios from "axios";
-// import store from "../store"
-// import ReturnedResults from '../components/ReturnedResults.vue'
+// import store from "../store" // look at main.js
+// import ReturnedResults from '../components/ReturnedResults.vue' // subnesting, not needed in your case
 
 export default {
   name: "Search",
-  // components: { ReturnedResults },
+  // components: { ReturnedResults }, // subnesting, not needed in your case
   data() {
     return {
       searchValue: "",
       searchResults: undefined,
       hidden: true,
-      result: undefined
+      // result: undefined, // single result entry, not needed, we use this.$store
     };
   },
   methods: {
@@ -69,9 +67,9 @@ export default {
     getSingleResult(result, index) {
       this.hidden = true
       console.log("hello this works " + index + " is " + result['2. name'])
-      this.$store.commit("setResult", result)
-      this.result = result
-      console.log(this.$store.getters.result)
+      this.$store.commit("setResult", result) // write to global this.$store from main.js
+      // this.result = result // no longer needed
+      console.log(this.$store.getters.result) // probably better as mapgetters, but this works for now
     },
   },
 };

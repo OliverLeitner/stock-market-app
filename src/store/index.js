@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+// needed for store to work
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -26,4 +27,5 @@ const store = new Vuex.Store({
     },
   },
 });
+// i prefer to have the export separated from the actual object/var
 export default store

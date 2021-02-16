@@ -1,7 +1,7 @@
 <template>
   <div class="returned-results" v-show="storeData">
     <section>
-	{{storeData}}
+      {{storeData}}
     </section>
   </div>
 </template>
@@ -9,12 +9,12 @@
 <script>
 export default {
   name: "Result",
-  props: ["result"],
-  computed: {
-  storeData: function() {
-   console.log(this.$store.state);
-   return this.$store.state.result;
-  }
+  // props: ["result"], // not needed, we use this.$store from main.js
+  computed: { // when this.$store containes our result...
+    storeData: function() {
+      console.log(this.$store.state); // mapgetters would be better, but this works too...
+      return this.$store.state.result; // we want store data to be returned, so we ... return
+    }
   }
 }
 </script>

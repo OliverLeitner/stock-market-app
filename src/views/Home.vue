@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h1>Stock Market App</h1>
-<SearchInput />
-<ReturnedResults />
+    <SearchInput />
+    <ReturnedResults />
   </div>
 </template>
 

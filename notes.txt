@@ -29,7 +29,7 @@ shown to the user
  and they get shown to them in a very simple 
  dashboard
 
- ##
+##
 0NEGUY: it won't matter that it's in a nested component, you should just change the 
 autocomplete-results to a <router-link> and then reference this to set up dynamic routes
 0NEGUY: https://router.vuejs.org/guide/essentials/dynamic-matching.html
@@ -39,3 +39,14 @@ creativenull: you can start aiming for the each item click show info thingy u we
 talking about before and limit the api search
 0NEGUY: https://lodash.com/docs/#debounce
 creativenull: so like delay the api call after they're done typing
+
+##
+nevbear: v-model should point to this.$store.state... directly... whereever possible
+nevbear: also on this.$store have a look at mapStates besides mapGetters... for mass handling of data
+nevbear: also interresting, the whole emitter stuff...
+nevbear: a tip on this.$store... nave a look at vuex store namespaces (can have multiple stores for multiple components...)
+nevbear: you may want to have a way to reset the output and the input field (button, click on title...)
+nevbear: depending on the type of outputdesign you want, you may want to have a component for it (grid-component, graph-component...)
+nevbear: since youre using axios and the limitations of vantage, have a look at axios cacheing...
+nevbear: since youre using axios, you may want to take a study into graphql
+nevbear: vue ssr / ssg (SEO) might become interresting
