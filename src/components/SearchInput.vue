@@ -19,18 +19,17 @@
         <div class="autocomplete-result">{{ result["2. name"] }}</div>
       </div>
     </div>
-    <ReturnedResults :result="result"/>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 // import store from "../store"
-import ReturnedResults from '../components/ReturnedResults.vue'
+// import ReturnedResults from '../components/ReturnedResults.vue'
 
 export default {
   name: "Search",
-  components: { ReturnedResults },
+  // components: { ReturnedResults },
   data() {
     return {
       searchValue: "",
@@ -70,9 +69,9 @@ export default {
     getSingleResult(result, index) {
       this.hidden = true
       console.log("hello this works " + index + " is " + result['2. name'])
-      // store.commit("setResult", result)
+      this.$store.commit("setResult", result)
       this.result = result
-      // console.log(store.getters.result)
+      console.log(this.$store.getters.result)
     },
   },
 };

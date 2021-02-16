@@ -1,7 +1,7 @@
 <template>
-  <div class="returned-results" v-show="result">
+  <div class="returned-results" v-show="storeData">
     <section>
-      {{result}}
+	{{storeData}}
     </section>
   </div>
 </template>
@@ -9,8 +9,14 @@
 <script>
 export default {
   name: "Result",
-  props: ["result"]
-};
+  props: ["result"],
+  computed: {
+  storeData: function() {
+   console.log(this.$store.state);
+   return this.$store.state.result;
+  }
+  }
+}
 </script>
 
 <style lang="css" scoped>
